@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var reservations = [];
+var waitlist = [];
 
 // Gives the user specific routes
 app.get("/", function(req, res) {
@@ -30,9 +31,14 @@ app.get("/api/table", function(req, res) {
 // Gets input from user for a new reservation and pushes it to the reservations array
 app.post("/new", function(req, res) {
 	var newReservation = req.body;
-	console.log(newReservation);
 	var ReservationName = newReservation.name;
-	reservations.push(newReservation);
+	if (reservations.length < 5) {
+		reservations.push(newReservation);
+		console.log("Made a reservation");
+	} else {
+		waitlist.push(newReservation);
+		console.log("On the waitlist");
+	};
 	res.json(newReservation);
 });
 
