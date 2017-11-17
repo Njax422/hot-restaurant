@@ -39,17 +39,17 @@
 
               <div class="form-group">
                 <label for="phone-number">Phone Number</label>
-                <input type="text" class="form-control" id="role">
+                <input type="text" class="form-control" id="phoneNumber">
               </div>
 
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="age">
+                <input type="text" class="form-control" id="email">
               </div>
 
               <div class="form-group">
                 <label for="Unique-ID">Unique ID</label>
-                <input type="text" class="form-control" id="force-points">
+                <input type="text" class="form-control" id="uniqueID">
               </div>
 
             </form>
@@ -67,17 +67,17 @@
   <script type="text/javascript">
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
-      var newCharacter = {
+      var newReservation = {
         name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
+        phoneNumber: $("#phoneNumber").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueID: $("#uniqueID").val().trim()
       };
 
-      $.post("/api/new", newCharacter)
+      $.post("/new", newReservation)
       .done(function(data) {
         console.log(data);
-        alert("Adding character...");
+        alert("Adding reservation...");
       });
     });
   </script>
