@@ -23,6 +23,10 @@ app.get("/reserve", function(req, res) {
 	res.sendFile(path.join(__dirname, "make.html"));
 });
 
+app.get("/api/table", function(req, res) {
+	res.json(reservations);
+});
+
 // Gets input from user for a new reservation and pushes it to the reservations array
 app.post("/new", function(req, res) {
 	var newReservation = req.body;
