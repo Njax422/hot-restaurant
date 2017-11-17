@@ -18,34 +18,41 @@
   		<a href="/reserve" class="text-center"><button type="button" class="btn btn-danger btn-lg center-block"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
   		<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 	</div>
-	<table class="table">
-      	<thead>Current Reservations
-      	<tr id="reservations">
-      	</tr>
-    </thead>
-    </table>
-    <br>
-    <br>
-  	<table class="table" id="waitlist">
-    	<thead>Waiting List</thead>
-    	<tr>
-    	</tr>
-    </table>
-    <br>
-    <br>
+	      <table class="table table-hover" id='reservations'>
+                <thead>Reservations</thead>
+                <tbody>
+                </tbody>
+              </table>
+
+              <table class="table table-hover" id='waitlist'>
+                <thead>Waiting List</thead>
+                <tbody>
+                </tbody>
+              </table>
+
+	<br><br>
+
+
+    </table><br><br>
  	Control Panel<br>
- 	<a href="#" id="clear">Clear Table</a>&nbsp;|&nbsp;<a href="api/tables">API Table Link</a>&nbsp;|&nbsp;<a href="api/waitlist">API Wait List</a>
+ 	<a href="#" id="clear">Clear Table</a>&nbsp;|&nbsp;<a href="api/table">API Table Link</a>&nbsp;|&nbsp;<a href="api/waitlist">API Wait List</a>
     </div>
     </div>
     </div>
 
       <script type="text/javascript">
-      $.get("/api/table", function(data) {
-        console.log(data);
-        for (var i = 0; i < data.length; i++) {
-        	$("#reservations > tbody").append("<tr><td>" + data[i].uniqueID);
-        };
-      });
+        $.get("/api/table", function(data) {
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+              $("#reservations > tbody").append("<tr><td>" + data[i].uniqueID);
+          };
+        });
+        $.get("/api/waitlist", function(data) {
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+              $("#waitlist > tbody").append("<tr><td>" + data[i].uniqueID);
+          };
+        });
   </script>
 
     	<script type="text/javascript">
