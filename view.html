@@ -18,17 +18,21 @@
   		<a href="/reserve" class="text-center"><button type="button" class="btn btn-danger btn-lg center-block"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
   		<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 	</div>
-	<table class="table" id="reservations">
+	<table class="table">
       	<thead>Current Reservations
-      	<tr>
+      	<tr id="reservations">
       	</tr>
     </thead>
-    </table><br><br>
-    	<table class="table" id="waitlist">
-      	<thead>Waiting List</thead>
-      	<tr>
-      	</tr>
-    </table><br><br>
+    </table>
+    <br>
+    <br>
+  	<table class="table" id="waitlist">
+    	<thead>Waiting List</thead>
+    	<tr>
+    	</tr>
+    </table>
+    <br>
+    <br>
  	Control Panel<br>
  	<a href="#" id="clear">Clear Table</a>&nbsp;|&nbsp;<a href="api/tables">API Table Link</a>&nbsp;|&nbsp;<a href="api/waitlist">API Wait List</a>
     </div>
@@ -39,7 +43,7 @@
       $.get("/api/table", function(data) {
         console.log(data);
         for (var i = 0; i < data.length; i++) {
-        	$("reservations").append(data[i].uniqueID;
+        	$("#reservations > tbody").append("<tr><td>" + data[i].uniqueID);
         };
       });
   </script>
