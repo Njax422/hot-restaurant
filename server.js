@@ -48,8 +48,10 @@ app.post("/new", function(req, res) {
 
 app.post("/delete", function(req, res) {
 	reservations.shift();
-	reservations.push(waitlist[0]);
-	waitlist.shift();
+	if (waitlist.length > 0) {
+		reservations.push(waitlist[0]);
+		waitlist.shift();
+	};
 });
 
 
