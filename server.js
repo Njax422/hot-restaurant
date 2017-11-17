@@ -25,7 +25,6 @@ app.get("/reserve", function(req, res) {
 
 // Gets input from user for a new reservation and pushes it to the reservations array
 app.post("/new", function(req, res) {
-	console.log("test");
 	var newReservation = req.body;
 	console.log(newReservation);
 	var ReservationName = newReservation.name;
