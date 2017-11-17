@@ -28,6 +28,10 @@ app.get("/api/table", function(req, res) {
 	res.json(reservations);
 });
 
+app.get("/api/waitlist", function(req, res) {
+	res.json(waitlist);
+});
+
 // Gets input from user for a new reservation and pushes it to the reservations array
 app.post("/new", function(req, res) {
 	var newReservation = req.body;
