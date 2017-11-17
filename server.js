@@ -46,6 +46,12 @@ app.post("/new", function(req, res) {
 	res.json(newReservation);
 });
 
+app.post("/delete", function(req, res) {
+	reservations.shift();
+	reservations.push(waitlist[0]);
+	waitlist.shift();
+});
+
 
 // App listening on a specific port
 app.listen(PORT, function() {

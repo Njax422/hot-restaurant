@@ -56,15 +56,26 @@
   </script>
 
     	<script type="text/javascript">
-    	function clearTable(){
-		var currentURL = window.location.origin;
-		$.ajax({url: currentURL + "/api/clear", method: "POST"})
-
-		}
 
 		$("#clear").on('click', function(){
+      event.preventDefault();
 			alert("Clearing...");
-			clearTable();
+			$.post("/delete").done(function(data) {
+        alert("Clearing...");
+      });
+      $.get("/api/table", function(data) {
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            $("#reservations > tbody").append("<tr><td>" + data[i].uniqueID);
+        };
+      });
+      $.get("/api/waitlist", function(data) {
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            $("#waitlist > tbody").append("<tr><td>" + data[i].uniqueID);
+        };
+      });
+      
 
 		location.reload();
 		})
